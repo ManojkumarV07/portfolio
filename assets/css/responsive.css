@@ -1,0 +1,219 @@
+/* ============================================================
+   RESPONSIVE — loads after styles.css and overrides it.
+   Covers small phone -> phone -> tablet -> laptop -> desktop -> TV,
+   plus landscape phones, touch devices and reduced motion.
+   Delete the <link> in index.html to drop all of it.
+   ============================================================ */
+
+/* ---------- fluid type ----------
+   styles.css sets 29 font sizes in fixed px, so on a 4K screen the
+   headings scale (they use clamp) but the body copy stays 14-16px and
+   the page reads as a small card. These tokens scale with the viewport
+   and stop at a sensible ceiling. */
+:root {
+  --fs-body:  clamp(15px, 0.42vw + 13px, 20px);
+  --fs-small: clamp(13px, 0.30vw + 11px, 17px);
+  --fs-micro: clamp(11px, 0.22vw + 9.5px, 15px);
+  --fs-lead:  clamp(17px, 0.60vw + 14px, 26px);
+  --shell: 1200px;             /* content width, widened on big screens */
+}
+
+/* The game strip may grow horizontally only. It never pushes the links
+   and never changes the bar's height — it yields first if space runs out. */
+.navbar > .nav-links { flex: 0 0 auto; }
+.navbar > .runner { flex: 0 1 auto; }   /* no overflow clip — it hid the hover tip */
+
+/* ---------- horizontal overflow ----------
+   body already has overflow-x:hidden, which hides a bug rather than
+   fixing it. This stops anything creating one in the first place. */
+html { overflow-x: clip; }
+* { min-width: 0; }
+.marquee-section { max-width: 100vw; overflow: hidden; }
+
+/* ---------- viewport height ----------
+   100vh on a phone is taller than the visible area while the address
+   bar is showing, so the hero gets cut off and jumps as you scroll. */
+@supports (height: 100dvh) {
+  .hero { min-height: 100dvh; }
+}
+
+/* safe areas on notched phones — footer only; the navbar is left exactly
+   as styles.css defines it */
+@supports (padding: max(0px)) {
+  .footer { padding-bottom: max(30px, env(safe-area-inset-bottom)); }
+}
+
+/* ---------- nav landing ----------
+   script.js hides the navbar on any downward scroll, so a nav click
+   landed you with the bar gone and an empty band above the heading. */
+body.nav-locked .navbar.hidden { transform: translateY(0); }
+section[id] { scroll-margin-top: 18px; }
+
+/* the mobile drawer had no scroll — on a short screen the lower links
+   were unreachable */
+.nav-links { overscroll-behavior: contain; }
+@media (max-width: 900px) {
+  .nav-links { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+}
+
+
+/* ---------- about photo framing ----------
+   The frame is 3/4 but the photo is 9/16, so `cover` throws away 533px of
+   height. Centred, that took 266px off the top — and the hair starts at
+   172px, so the top of the head was being cut. Biasing the crop upward
+   keeps the whole head with ~65px of sky above it. Image size and frame
+   are untouched; only which slice shows. */
+.about-image img { object-position: 50% 20%; }
+
+/* the hover zoom scales from the centre, which re-clips the top */
+.about-image:hover img { transform: scale(1.05); transform-origin: 50% 20%; }
+
+/* ============================================================
+   SMALL PHONE  (<= 380px)
+   ============================================================ */
+@media (max-width: 380px) {
+  .section { padding: 44px 14px; }
+  .hero-name { font-size: 22vw; }
+  .hero-role { font-size: 16px; bottom: 48px; }
+  .hero-bar { padding: 10px 12px; font-size: 11px; }
+  .about-stats { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cert-item { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px; }
+  .exp-card { padding: 20px 16px; }
+  .exp-header { flex-direction: column; }
+  .contact-btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   PHONE  (<= 600px)
+   ============================================================ */
+@media (max-width: 600px) {
+  .section { padding: 52px 18px; }
+  .contact-section { padding: 56px 18px 44px; }
+  .cert-item { padding: 16px 18px; }
+  .cert-item:hover { padding-left: 18px; }        /* no hover shift on touch */
+  .exp-card { padding: 24px 20px; }
+  .project-card { padding: 24px 20px; }
+  .contact-links { flex-direction: column; align-items: stretch; }
+  .footer { font-size: 12px; }
+}
+
+/* ============================================================
+   TABLET  (601 - 900px)  — the gap the original CSS never covered
+   ============================================================ */
+@media (min-width: 601px) and (max-width: 900px) {
+  .section { padding: 64px 32px; }
+  .hero-stage { aspect-ratio: 4/5; }
+  .skills-container { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .cert-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 20px; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
+   LAPTOP AND UP  (>= 901px)  — density fixes
+   ============================================================ */
+@media (min-width: 901px) {
+  /* eight certificates as full-width rows left a wide gutter between
+     each name and its badge, and doubled the section's height */
+  .cert-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 28px; }
+  .cert-item { padding: 18px 22px; }
+
+  /* one experience card spanning the full width with five short bullets
+     left most of the card empty on the right */
+  .exp-list { columns: 2; column-gap: 48px; }
+  .exp-list li { break-inside: avoid; -webkit-column-break-inside: avoid; }
+
+  /* four timeline entries stacked in one tall column */
+  .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 0 44px; }
+
+  /* about text ran short beside a tall portrait, leaving a gap below it */
+  .about-grid { align-items: start; }
+  .about-image { position: sticky; top: calc(var(--nav-h) + 16px); }
+
+  .section { padding: 56px 40px; }
+}
+
+/* ---------- fluid body copy from tablet up ---------- */
+@media (min-width: 601px) {
+  .about-text p, .exp-list li, .project-card p { font-size: var(--fs-body); }
+  .cert-name, .stat-label, .tl-place { font-size: var(--fs-small); }
+  .skill-tag, .project-tech span, .cert-org, .exp-date, .tl-year,
+  .section-label, .footer { font-size: var(--fs-micro); }
+  .contact-sub { font-size: var(--fs-lead); }
+}
+
+/* ============================================================
+   LARGE DESKTOP  (>= 1500px)
+   Content was pinned at 1200px, so past this width the page became a
+   narrow column marooned in empty space.
+   ============================================================ */
+@media (min-width: 1500px) {
+  :root { --shell: 1440px; }
+  .section, .contact-inner, .footer { max-width: var(--shell); }
+  .hero-stage { width: min(1680px, 94%); }
+  .skills-container { grid-template-columns: repeat(4, 1fr); }
+  .section { padding: 70px 48px; }
+}
+
+/* ============================================================
+   TV / 4K  (>= 2000px)
+   ============================================================ */
+@media (min-width: 2000px) {
+  :root { --shell: 1760px; }
+  .hero-stage { width: min(2000px, 92%); }
+  .cert-list { grid-template-columns: repeat(3, 1fr); }
+  .exp-list { columns: 3; }
+  .timeline { grid-template-columns: repeat(4, 1fr); }
+  .section { padding: 88px 56px; }
+}
+
+/* ============================================================
+   LANDSCAPE PHONE — short and wide, where 100vh heroes break
+   ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: 460px; padding-top: calc(var(--nav-h) + 8px); }
+  .hero-stage { aspect-ratio: 16/9; }
+  .hero-name { font-size: 12vw; }
+  .section { padding: 40px 24px; }
+  .loader-name { font-size: 32px; }
+}
+
+/* ============================================================
+   TOUCH — hover states that stick, and targets too small to hit
+   ============================================================ */
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+  .cert-item:hover { background: none; padding-left: 22px; }
+  .hero-social a:hover { transform: none; }
+  .contact-btn { min-height: 44px; }        /* WCAG touch target */
+}
+
+/* ============================================================
+   REDUCED MOTION — styles.css animates unconditionally
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .marquee-track { animation: none !important; }
+}
+
+/* keyboard focus was invisible against the dark background */
+a:focus-visible, button:focus-visible, .runner:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- print ---------- */
+@media print {
+  .navbar, .loader, .runner, .cursor-dot, .cursor-ring,
+  .scroll-indicator, .marquee-section { display: none !important; }
+  body { background: #fff; color: #000; }
+  .section { padding: 16px 0; page-break-inside: avoid; }
+}

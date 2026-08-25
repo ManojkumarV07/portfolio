@@ -1,0 +1,40 @@
+/* ============================================================
+   SKILL CARD LOGOS
+   Replaces the emoji in .skill-icon with the artwork in
+   assets/images/icons/. Layout is untouched — the 50x50 tile,
+   the grid and every breakpoint stay exactly as they were.
+   Remove this file and its <link> to go back to emoji.
+   ============================================================ */
+
+/* drop the lime tile behind the icons — the box keeps its 50x50
+   footprint so nothing below it shifts, it is just transparent now.
+   Delete these two lines to bring the tile back. */
+.skill-icon {
+  background: none;
+  border-radius: 0;
+  width: 62px;
+  height: 62px;
+}
+
+.skill-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+}
+
+/* the Nokia is tall and narrow — size it by height so it keeps its shape */
+.skill-icon--nokia img {
+  width: auto;
+  height: 62px;
+}
+
+/* Languages: <> instead of a picture */
+.skill-icon--code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--accent);
+}

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
+  <title>Manoj Kumar V — Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Manoj Kumar V — MCA Student, Python Web Developer, and aspiring Software Engineer based in Bengaluru.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/skill-icons.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-name"><span>M</span><span>A</span><span>N</span><span>O</span><span>J</span></div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-brand">Manoj<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeNav()">About</a></li>
+      <li><a href="#skills" onclick="closeNav()">Skills</a></li>
+      <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+      <li><a href="#projects" onclick="closeNav()">Projects</a></li>
+      <li><a href="#education" onclick="closeNav()">Education</a></li>
+      <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-stage">
+      <img class="hero-portrait" alt="Manoj Kumar V"
+        src="assets/images/opt/hero-760.webp"
+        srcset="assets/images/opt/hero-420.webp 420w,
+                assets/images/opt/hero-760.webp 760w,
+                assets/images/opt/hero-1100.webp 1100w"
+        sizes="(max-width: 900px) 92vw, 46vw"
+        width="1100" height="2004" fetchpriority="high" decoding="async">
+      <h1 class="hero-name">Manoj Kumar</h1>
+      <div class="hero-bar">
+        <span class="mark">© Manoj Kumar V — Developer</span>
+      </div>
+      <div class="hero-social">
+        <a href="https://github.com/ManojkumarV07" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/manoj-kumar-72b1a627b" target="_blank" rel="noopener"
+          aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.13 2.06 2.06 0 01.01 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+          </svg>
+        </a>
+        <a href="mailto:manojkumarvk23@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+        </a>
+      </div>
+      <p class="hero-role">Software Developer<br>&amp; MCA Student</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span>Python</span><span class="filled">Web Dev</span><span>Django</span><span class="filled">SQL</span>
+      <span>Kotlin</span><span class="filled">Cybersecurity</span><span>PHP</span><span class="filled">DSA</span>
+      <span>Python</span><span class="filled">Web Dev</span><span>Django</span><span class="filled">SQL</span>
+      <span>Kotlin</span><span class="filled">Cybersecurity</span><span>PHP</span><span class="filled">DSA</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Turning Ideas Into<br>Digital Reality</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-image reveal reveal-delay-1">
+        <img alt="Manoj Kumar V portrait"
+          src="assets/images/opt/about-820.webp"
+          srcset="assets/images/opt/about-420.webp 420w,
+                  assets/images/opt/about-820.webp 820w,
+                  assets/images/opt/about-1200.webp 1200w"
+          sizes="(max-width: 900px) 92vw, 44vw"
+          width="1200" height="2133" loading="lazy" decoding="async">
+      </div>
+      <div class="about-text">
+        <p class="reveal reveal-delay-2">A motivated and detail-oriented <strong style="color:var(--ink)">Master of
+            Computer Applications (MCA)</strong> student with a strong foundation in software development, programming,
+          and database management.</p>
+        <p class="reveal reveal-delay-3">Proficient in Python, SQL, C, C++, HTML, CSS, Agile Methodology, and Data
+          Structures & Algorithms. Hands-on experience in web, desktop, and Android application development through
+          academic projects and internship experience.</p>
+        <p class="reveal reveal-delay-4">A quick learner with excellent problem-solving, communication, and teamwork
+          skills, eager to contribute to organizational success while continuously enhancing technical expertise.</p>
+        <div class="about-stats reveal">
+          <div class="stat">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Internship</div>
+          </div>
+        </div>
+
+        <!-- Hobbies -->
+        <div class="about-hobbies reveal">
+          <div class="hobbies-label">Beyond the Screen</div>
+          <div class="hobbies-grid">
+            <div class="hobby-chip">
+              <img src="assets/images/icons/hobby-badminton.png" alt="Badminton" class="hobby-icon-img">
+              <span>Badminton</span>
+            </div>
+            <div class="hobby-chip">
+              <img src="assets/images/icons/hobby-netflix.png" alt="Watching Series" class="hobby-icon-img">
+              <span>Watching Series</span>
+            </div>
+            <div class="hobby-chip">
+              <img src="assets/images/icons/hobby-motorbike.png" alt="Bike Rides" class="hobby-icon-img">
+              <span>Bike Rides</span>
+            </div>
+            <div class="hobby-chip">
+              <img src="assets/images/icons/hobby-snooker.png" alt="Snooker" class="hobby-icon-img">
+              <span>Snooker</span>
+            </div>
+            <div class="hobby-chip">
+              <img src="assets/images/icons/hobby-camera.png" alt="Photography" class="hobby-icon-img">
+              <span>Photography</span>
+            </div>
+            <div class="hobby-chip">
+              <img src="assets/images/icons/hobby-cricket.png" alt="Cricket" class="hobby-icon-img">
+              <span>Cricket</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="reveal">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">Skills & Technologies</h2>
+    </div>
+    <div class="skills-container">
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon"><span class="skill-icon--code">&lt;&gt;</span></div>
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Kotlin</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon"><img src="assets/images/icons/web.png" alt="" width="34" height="34" loading="lazy" decoding="async"></div>
+        <h3>Web Development</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-icon skill-icon--nokia"><img src="assets/images/icons/nokia.png" alt="" width="17" height="38" loading="lazy" decoding="async"></div>
+        <h3>Mobile & Desktop</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Android Studio</span>
+          <span class="skill-tag">Kotlin</span>
+          <span class="skill-tag">.NET</span>
+          <span class="skill-tag">Visual Studio</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-4">
+        <div class="skill-icon"><img src="assets/images/icons/skills.png" alt="" width="34" height="34" loading="lazy" decoding="async"></div>
+        <h3>Other Skills</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">DSA</span>
+          <span class="skill-tag">Agile</span>
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Cybersecurity</span>
+          <span class="skill-tag">Canva</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Work & Responsibility</h2>
+    </div>
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Python Web Developer Intern</div>
+          <div class="exp-company">IGRA Company</div>
+        </div>
+        <span class="exp-date">June 2024 — July 2024</span>
+      </div>
+      <ul class="exp-list">
+        <li>Developed interactive web pages using Python, HTML, and CSS</li>
+        <li>Designed and implemented web forms with form submission and user interaction features</li>
+        <li>Assisted in developing and testing front-end components to ensure functionality and usability</li>
+        <li>Collaborated with the development team to enhance webpage performance and user experience</li>
+        <li>Applied Python programming concepts to build and maintain dynamic web applications</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="reveal">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-num">01</div>
+        <h3>Dynamic Web Application</h3>
+        <p>Developed a dynamic web application using PHP and SQL with secure database integration. Implemented efficient
+          backend functionality and followed Agile development practices.</p>
+        <div class="project-tech">
+          <span>PHP</span><span>SQL</span><span>Agile</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-num">02</div>
+        <h3>Database-Driven Web App</h3>
+        <p>Built a database-driven web application using Python and Django. Implemented user authentication, data
+          management, and designed a scalable backend architecture.</p>
+        <div class="project-tech">
+          <span>Python</span><span>Django</span><span>SQL</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-num">03</div>
+        <h3>Android Mobile Application</h3>
+        <p>Developed a modern Android application with an intuitive and user-friendly interface. Designed interactive
+          mobile features to enhance user experience.</p>
+        <div class="project-tech">
+          <span>Kotlin</span><span>Android Studio</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-4">
+        <div class="project-num">04</div>
+        <h3>Desktop Management App</h3>
+        <p>Developed a desktop application integrated with SQL for efficient data management. Streamlined management
+          processes through effective database integration.</p>
+        <div class="project-tech">
+          <span>.NET</span><span>Visual Studio</span><span>SQL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="reveal">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Academic Journey</h2>
+    </div>
+    <!-- Snake grid: col1=left-cards | col2=center-connector | col3=right-cards -->
+    <div class="edu-snake reveal reveal-delay-1">
+
+      <!-- Row 1: MCA — LEFT card -->
+      <div class="edu-card edu-card--left" style="grid-column:1; grid-row:1">
+        <div class="timeline-item">
+          <h3>Master of Computer Applications (MCA)</h3>
+          <div class="tl-place">Kristu Jayanti (Deemed to be University)</div>
+          <div class="tl-year">2025 – 2027 · Pursuing</div>
+        </div>
+      </div>
+      <div class="edu-node" style="grid-column:2; grid-row:1 / 3">
+        <div class="edu-stem"></div>
+        <div class="arrow-node">↑</div>
+        <div class="edu-stem"></div>
+      </div>
+      <div class="edu-empty" style="grid-column:3; grid-row:1"></div>
+
+      <!-- Row 2: BCA — RIGHT card -->
+      <div class="edu-empty" style="grid-column:1; grid-row:2"></div>
+      <!-- connector spans rows 1-3, defined above -->
+      <div class="edu-card edu-card--right" style="grid-column:3; grid-row:2">
+        <div class="timeline-item">
+          <h3>Bachelor of Computer Applications (BCA)</h3>
+          <div class="tl-place">Kristu Jayanti College, Autonomous</div>
+          <div class="tl-year">2022 – 2025 · 70.83%</div>
+        </div>
+      </div>
+
+      <!-- Row 3: Class XII — LEFT card, new connector spans rows 3-4 -->
+      <div class="edu-card edu-card--left" style="grid-column:1; grid-row:3">
+        <div class="timeline-item">
+          <h3>Class XII (PCMC)</h3>
+          <div class="tl-place">Vision Residential PU College</div>
+          <div class="tl-year">2020 – 2022 · 77%</div>
+        </div>
+      </div>
+      <div class="edu-node" style="grid-column:2; grid-row:3 / 5">
+        <div class="edu-stem"></div>
+        <div class="arrow-node">↑</div>
+        <div class="edu-stem"></div>
+      </div>
+      <div class="edu-empty" style="grid-column:3; grid-row:3"></div>
+
+      <!-- Row 4: Class X — RIGHT card -->
+      <div class="edu-empty" style="grid-column:1; grid-row:4"></div>
+      <div class="edu-card edu-card--right" style="grid-column:3; grid-row:4">
+        <div class="timeline-item">
+          <h3>Class X</h3>
+          <div class="tl-place">Chinmaya Vidyalaya High School</div>
+          <div class="tl-year">2017 – 2020 · 76.48%</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <div class="reveal">
+      <div class="section-label">Certifications</div>
+      <h2 class="section-title">Credentials & Awards</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert-item reveal"><span class="cert-name">Ethical Hacking Essentials (EHE)</span><span
+          class="cert-org">Cynexera 2026</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Cisco Certified Support Technician Cybersecurity</span><span
+          class="cert-org">Cisco 2025</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Java Programming Fundamentals</span><span
+          class="cert-org">Infosys Springboard 2025</span></div>
+      <div class="cert-item reveal"><span class="cert-name">MongoDB Certification — Java Developer Path</span><span
+          class="cert-org">MongoDB 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Selenium Webdriver with Python</span><span
+          class="cert-org">Udemy 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">The Joy of Computing Using Python</span><span
+          class="cert-org">NPTEL 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Cloud Security Fundamentals</span><span
+          class="cert-org">Palo Alto 2024</span></div>
+      <div class="cert-item reveal"><span class="cert-name">Database Management System</span><span
+          class="cert-org">NPTEL 2023</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="section-label" style="justify-content:center">Get In Touch</div>
+        <h2 class="contact-title">Let's Build<br>Something <span>Great</span></h2>
+        <p class="contact-sub">I'm always open to new opportunities, collaborations, and interesting projects. Let's
+          connect!</p>
+      </div>
+      <div class="contact-links reveal reveal-delay-2">
+        <a href="mailto:manojkumarvk23@gmail.com" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+          Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/manoj-kumar-72b1a627b" target="_blank" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.13 2.06 2.06 0 01.01 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/ManojkumarV07" target="_blank" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z" />
+          </svg>
+          GitHub
+        </a>
+        <a href="https://wa.me/917760647147?text=Hi%20Manoj%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17-.35.22-.64.07c-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.8a9.86 9.86 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.85 9.85 0 012.18 12c0-5.46 4.44-9.9 9.9-9.9a9.83 9.83 0 017 2.9 9.83 9.83 0 012.9 7c0 5.46-4.44 9.9-9.93 9.9zm8.41-18.31A11.82 11.82 0 0012.05 0C5.49 0 .13 5.35.13 11.93a11.88 11.88 0 001.59 5.95L0 24l6.26-1.64a11.9 11.9 0 005.76 1.47h.01c6.56 0 11.92-5.35 11.92-11.93a11.82 11.82 0 00-3.49-8.41z" />
+          </svg>
+          WhatsApp Me
+        </a>
+        <a href="assets/Manoj_Kumar_V_Resume.pdf" download class="contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+          </svg>
+          Resume
+        </a>
+      </div>
+    </div>
+    <div class="footer">
+      <span>© 2026 Manoj Kumar V. All rights reserved.</span>
+      <span>Built with ❤️ in Bengaluru</span>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="assets/js/nav-runner.js"></script>
+  <script src="assets/js/robot-smash.js"></script>
+</body>
+
+</html>
