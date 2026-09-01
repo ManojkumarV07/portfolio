@@ -72,7 +72,7 @@
               d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 11-.01-4.13 2.06 2.06 0 01.01 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
           </svg>
         </a>
-        <a href="mailto:manojkumarvk23@gmail.com?subject=Hello%20Manoj%20%E2%80%94%20Saw%20Your%20Portfolio&body=Hi%20Manoj%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect!%0A%0A" aria-label="Email">
+        <a href="javascript:void(0)" onclick="openEmailModal()" aria-label="Email">
           <svg viewBox="0 0 24 24">
             <path
               d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
@@ -401,13 +401,13 @@
           connect!</p>
       </div>
       <div class="contact-links reveal reveal-delay-2">
-        <a href="mailto:manojkumarvk23@gmail.com?subject=Hello%20Manoj%20%E2%80%94%20Saw%20Your%20Portfolio&body=Hi%20Manoj%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect!%0A%0A" class="contact-btn">
+        <button onclick="openEmailModal()" class="contact-btn">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
           </svg>
           Email Me
-        </a>
+        </button>
         <a href="https://www.linkedin.com/in/manoj-kumar-72b1a627b" target="_blank" class="contact-btn">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -448,6 +448,39 @@
       <span>Built with ❤️ in Bengaluru</span>
     </div>
   </section>
+
+  <!-- EMAIL PICKER MODAL -->
+  <div class="email-modal-overlay" id="emailModalOverlay" onclick="closeEmailModal()">
+    <div class="email-modal" onclick="event.stopPropagation()">
+      <div class="email-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      </div>
+      <h3 class="email-modal-title">How would you like to reach out?</h3>
+      <p class="email-modal-sub">Choose how to open your email</p>
+      <div class="email-modal-options">
+        <a id="emailGmailBtn" href="#" target="_blank" class="email-option email-option--gmail">
+          <svg viewBox="0 0 24 24">
+            <path fill="#EA4335" d="M22.288 21H1.712A1.712 1.712 0 010 19.288V4.712A1.712 1.712 0 011.712 3H22.288A1.712 1.712 0 0124 4.712V19.288A1.712 1.712 0 0122.288 21z"/>
+            <path fill="#FBBC05" d="M0 4.712L12 13.5 24 4.712"/>
+            <path fill="#fff" d="M0 4.712L12 13.5 24 4.712V19.288H0z" opacity="0"/>
+            <path fill="#ffffff" d="M22.288 3H1.712A1.712 1.712 0 000 4.712L12 13.5l12-8.788A1.712 1.712 0 0022.288 3z"/>
+          </svg>
+          Open in Gmail
+          <span class="email-option-badge">Recommended</span>
+        </a>
+        <a id="emailMailtoBtn" href="#" class="email-option email-option--native">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          Open Mail App
+          <span class="email-option-sub">Outlook, Apple Mail…</span>
+        </a>
+      </div>
+      <button class="email-modal-close" onclick="closeEmailModal()" aria-label="Close">✕</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
   <script src="assets/js/nav-runner.js"></script>

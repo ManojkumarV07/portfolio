@@ -145,3 +145,35 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+// ===== EMAIL PICKER MODAL =====
+const EMAIL_TO      = 'manojkumarvk23@gmail.com';
+const EMAIL_SUBJECT = 'Hello Manoj \u2014 Saw Your Portfolio';
+const EMAIL_BODY    = 'Hi Manoj,\n\nI came across your portfolio and would love to connect!\n\n';
+
+function openEmailModal() {
+  const subject = encodeURIComponent(EMAIL_SUBJECT);
+  const body    = encodeURIComponent(EMAIL_BODY);
+
+  // Gmail compose URL — works in any browser without an email client
+  document.getElementById('emailGmailBtn').href =
+    `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL_TO)}&su=${subject}&body=${body}`;
+
+  // Mailto — opens Outlook / Apple Mail / etc.
+  document.getElementById('emailMailtoBtn').href =
+    `mailto:${EMAIL_TO}?subject=${subject}&body=${body}`;
+
+  document.getElementById('emailModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEmailModal() {
+  document.getElementById('emailModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeEmailModal();
+});
+
