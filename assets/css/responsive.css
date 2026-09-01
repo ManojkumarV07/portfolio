@@ -210,10 +210,23 @@ a:focus-visible, button:focus-visible, .runner:focus-visible {
   border-radius: 4px;
 }
 
+/* ===== PROJECT MODAL RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .proj-modal { border-radius: 20px; }
+  .proj-modal-header { padding: 28px 22px 20px; }
+  .proj-modal-body { padding: 22px; }
+  .proj-modal-modules,
+  .proj-modal-learnings { padding: 20px 22px; }
+  .proj-modal-title { font-size: 22px; }
+  .proj-modal-num { font-size: 56px; }
+  .project-meta-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
 /* ---------- print ---------- */
 @media print {
   .navbar, .loader, .runner, .cursor-dot, .cursor-ring,
-  .scroll-indicator, .marquee-section { display: none !important; }
+  .scroll-indicator, .marquee-section,
+  .proj-modal-overlay, .email-modal-overlay { display: none !important; }
   body { background: #fff; color: #000; }
   .section { padding: 16px 0; page-break-inside: avoid; }
 }

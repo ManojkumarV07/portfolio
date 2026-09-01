@@ -262,44 +262,98 @@
       <h2 class="section-title">Featured Projects</h2>
     </div>
     <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
+
+      <!-- Card 1: PriceNova -->
+      <div class="project-card reveal reveal-delay-1" onclick="openProject('pricenova')" role="button" tabindex="0" aria-label="View PriceNova project details">
         <div class="project-num">01</div>
-        <h3>Dynamic Web Application</h3>
-        <p>Developed a dynamic web application using PHP and SQL with secure database integration. Implemented efficient
-          backend functionality and followed Agile development practices.</p>
-        <div class="project-tech">
-          <span>PHP</span><span>SQL</span><span>Agile</span>
+        <div class="project-card-inner">
+          <div class="project-meta-row">
+            <span class="project-type-badge group-badge">👥 Group Project</span>
+          </div>
+          <h3>PriceNova</h3>
+          <p>A full-stack e-commerce platform for browsing and purchasing products, featuring user auth, seller dashboard, and a product management system.</p>
+          <div class="project-tech">
+            <span>PHP</span><span>MySQL</span><span>HTML/CSS</span><span>XAMPP</span>
+          </div>
+          <div class="project-cta">View Details <span class="project-arrow">→</span></div>
         </div>
       </div>
-      <div class="project-card reveal reveal-delay-2">
+
+      <!-- Card 2: BookMyShow -->
+      <div class="project-card reveal reveal-delay-2" onclick="openProject('bookmyshow')" role="button" tabindex="0" aria-label="View BookMyShow project details">
         <div class="project-num">02</div>
-        <h3>Database-Driven Web App</h3>
-        <p>Built a database-driven web application using Python and Django. Implemented user authentication, data
-          management, and designed a scalable backend architecture.</p>
-        <div class="project-tech">
-          <span>Python</span><span>Django</span><span>SQL</span>
+        <div class="project-card-inner">
+          <div class="project-meta-row">
+            <span class="project-type-badge solo-badge">🧑‍💻 Solo Project</span>
+          </div>
+          <h3>BookMyShow</h3>
+          <p>A movie ticket booking web app built with Django and SQL, featuring secure user authentication, movie data management, and a scalable backend.</p>
+          <div class="project-tech">
+            <span>Python</span><span>Django</span><span>SQL</span>
+          </div>
+          <div class="project-cta">View Details <span class="project-arrow">→</span></div>
         </div>
       </div>
-      <div class="project-card reveal reveal-delay-3">
+
+      <!-- Card 3: Blood Donation App -->
+      <div class="project-card reveal reveal-delay-3" onclick="openProject('bloodapp')" role="button" tabindex="0" aria-label="View Blood Donation App project details">
         <div class="project-num">03</div>
-        <h3>Android Mobile Application</h3>
-        <p>Developed a modern Android application with an intuitive and user-friendly interface. Designed interactive
-          mobile features to enhance user experience.</p>
-        <div class="project-tech">
-          <span>Kotlin</span><span>Android Studio</span>
+        <div class="project-card-inner">
+          <div class="project-meta-row">
+            <span class="project-type-badge solo-badge">🧑‍💻 Solo Project</span>
+          </div>
+          <h3>Blood Donation App</h3>
+          <p>An Android app connecting blood donors with recipients using Firebase Firestore, real-time auth, cloud messaging, and Jetpack Compose UI.</p>
+          <div class="project-tech">
+            <span>Kotlin</span><span>Jetpack Compose</span><span>Firebase</span>
+          </div>
+          <div class="project-cta">View Details <span class="project-arrow">→</span></div>
         </div>
       </div>
-      <div class="project-card reveal reveal-delay-4">
+
+      <!-- Card 4: School Management System -->
+      <div class="project-card reveal reveal-delay-4" onclick="openProject('schoolms')" role="button" tabindex="0" aria-label="View School Management System project details">
         <div class="project-num">04</div>
-        <h3>Desktop Management App</h3>
-        <p>Developed a desktop application integrated with SQL for efficient data management. Streamlined management
-          processes through effective database integration.</p>
-        <div class="project-tech">
-          <span>.NET</span><span>Visual Studio</span><span>SQL</span>
+        <div class="project-card-inner">
+          <div class="project-meta-row">
+            <span class="project-type-badge solo-badge">🧑‍💻 Solo Project</span>
+          </div>
+          <h3>School Management System</h3>
+          <p>A desktop administrative app for managing students, staff, and admin records, reducing manual work and centralizing school operations.</p>
+          <div class="project-tech">
+            <span>.NET</span><span>Visual Studio</span><span>SQL Server</span>
+          </div>
+          <div class="project-cta">View Details <span class="project-arrow">→</span></div>
         </div>
       </div>
+
     </div>
   </section>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="proj-modal-overlay" id="projModalOverlay" onclick="closeProject()">
+    <div class="proj-modal" id="projModal" onclick="event.stopPropagation()">
+      <button class="proj-modal-close" onclick="closeProject()" aria-label="Close">✕</button>
+      <div class="proj-modal-scroll">
+        <!-- Header -->
+        <div class="proj-modal-header">
+          <div class="proj-modal-num" id="pmNum">01</div>
+          <div class="proj-modal-meta">
+            <span class="proj-modal-badge" id="pmBadge"></span>
+            <span class="proj-modal-year" id="pmYear"></span>
+          </div>
+          <h2 class="proj-modal-title" id="pmTitle"></h2>
+          <div class="proj-modal-tech" id="pmTech"></div>
+        </div>
+        <!-- Body -->
+        <div class="proj-modal-body" id="pmBody"></div>
+        <!-- Modules -->
+        <div class="proj-modal-modules" id="pmModules"></div>
+        <!-- Learnings -->
+        <div class="proj-modal-learnings" id="pmLearnings"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- EDUCATION -->
   <section class="section" id="education">

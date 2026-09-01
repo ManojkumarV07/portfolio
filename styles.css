@@ -438,22 +438,65 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   border-radius: var(--radius);
   padding: 36px;
   position: relative; overflow: hidden;
-  transition: transform 0.4s var(--transition), border-color 0.3s;
+  transition: transform 0.4s var(--transition), border-color 0.3s, box-shadow 0.4s;
+  cursor: pointer;
+}
+.project-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(196,255,77,0.04) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
 }
 .project-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(196,255,77,0.3);
+  transform: translateY(-6px);
+  border-color: rgba(196,255,77,0.35);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(196,255,77,0.1);
 }
+.project-card:hover::after { opacity: 1; }
+
+.project-card-inner { position: relative; z-index: 1; }
+
 .project-num {
   font-size: 64px; font-weight: 900;
   color: rgba(255,255,255,0.04);
   position: absolute; top: -10px; right: 20px;
   line-height: 1;
+  transition: color 0.3s;
+}
+.project-card:hover .project-num { color: rgba(196,255,77,0.07); }
+
+.project-meta-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.project-type-badge {
+  font-size: 11px; font-weight: 600;
+  padding: 4px 12px; border-radius: 100px;
+  letter-spacing: 0.03em;
+}
+.group-badge {
+  background: rgba(250,190,60,0.12);
+  color: #fabd3c;
+  border: 1px solid rgba(250,190,60,0.25);
+}
+.solo-badge {
+  background: rgba(196,255,77,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(196,255,77,0.2);
+}
+.project-year {
+  font-size: 12px; color: var(--ink-muted);
+  font-weight: 500;
 }
 .project-card h3 {
   font-size: 22px; font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  transition: color 0.3s;
 }
+.project-card:hover h3 { color: var(--accent); }
 .project-card p {
   font-size: 15px; line-height: 1.6;
   color: var(--ink-muted);
@@ -461,6 +504,7 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 }
 .project-tech {
   display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 20px;
 }
 .project-tech span {
   font-size: 11px; padding: 5px 12px;
@@ -469,6 +513,203 @@ section[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   border-radius: 100px;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+.project-cta {
+  font-size: 13px; font-weight: 600;
+  color: var(--ink-muted);
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.3s, gap 0.3s;
+}
+.project-card:hover .project-cta { color: var(--accent); gap: 10px; }
+.project-arrow {
+  display: inline-block;
+  transition: transform 0.3s var(--transition);
+}
+.project-card:hover .project-arrow { transform: translateX(4px); }
+
+/* ===== PROJECT DETAIL MODAL ===== */
+.proj-modal-overlay {
+  position: fixed; inset: 0; z-index: 8500;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.35s var(--transition), visibility 0.35s;
+  padding: 20px;
+}
+.proj-modal-overlay.open { opacity: 1; visibility: visible; }
+
+.proj-modal {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  max-width: 720px; width: 100%;
+  max-height: 88vh;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(40px) scale(0.95);
+  transition: transform 0.4s var(--transition);
+  box-shadow: 0 60px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,255,77,0.08);
+}
+.proj-modal-overlay.open .proj-modal {
+  transform: translateY(0) scale(1);
+}
+
+.proj-modal-scroll {
+  overflow-y: auto;
+  max-height: 88vh;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196,255,77,0.3) transparent;
+}
+
+.proj-modal-close {
+  position: sticky; top: 16px; left: 0;
+  float: right;
+  margin: 16px 16px 0 0;
+  width: 36px; height: 36px;
+  background: var(--surface-2);
+  border: 1px solid var(--edge);
+  border-radius: 50%;
+  font-size: 14px; color: var(--ink-muted);
+  cursor: pointer; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.proj-modal-close:hover { background: var(--accent); color: var(--page); transform: rotate(90deg); }
+
+.proj-modal-header {
+  padding: 40px 40px 28px;
+  border-bottom: 1px solid var(--edge);
+  position: relative;
+  overflow: hidden;
+}
+.proj-modal-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), rgba(196,255,77,0.2), transparent);
+  animation: shimmerBar 2.5s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+@keyframes shimmerBar {
+  0%   { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.proj-modal-num {
+  font-size: 80px; font-weight: 900;
+  color: rgba(196,255,77,0.06);
+  position: absolute; top: -10px; right: 28px;
+  line-height: 1; pointer-events: none;
+}
+.proj-modal-meta {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+.proj-modal-badge {
+  font-size: 12px; font-weight: 600;
+  padding: 5px 14px; border-radius: 100px;
+}
+.proj-modal-year {
+  font-size: 12px; color: var(--ink-muted); font-weight: 500;
+}
+.proj-modal-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800; letter-spacing: -0.03em;
+  margin-bottom: 18px; line-height: 1.1;
+}
+.proj-modal-tech {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.proj-modal-tech span {
+  font-size: 12px; padding: 6px 14px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.proj-modal-body {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--edge);
+}
+.proj-modal-body p {
+  font-size: 15px; line-height: 1.75;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+}
+.proj-modal-body p:last-child { margin-bottom: 0; }
+.proj-modal-body strong { color: var(--ink); font-weight: 600; }
+
+.proj-modal-modules {
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--edge);
+}
+.proj-modal-modules h4 {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+.module-chips {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.module-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-muted);
+  transition: border-color 0.3s, color 0.3s, transform 0.3s var(--transition);
+  animation: chipFadeIn 0.4s var(--transition) both;
+}
+.module-chip:hover {
+  border-color: rgba(196,255,77,0.3);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+@keyframes chipFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.module-chip .chip-icon {
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.module-chip .chip-icon svg {
+  width: 18px; height: 18px;
+  stroke: var(--accent);
+  flex-shrink: 0;
+}
+.module-chip:hover .chip-icon svg { stroke: var(--ink); }
+
+.proj-modal-learnings {
+  padding: 28px 40px 36px;
+}
+.proj-modal-learnings h4 {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+.learning-list {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.learning-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; line-height: 1.6;
+  color: var(--ink-muted);
+  animation: learningIn 0.5s var(--transition) both;
+}
+.learning-item::before {
+  content: '✦';
+  color: var(--accent); font-size: 10px;
+  margin-top: 5px; flex-shrink: 0;
+}
+@keyframes learningIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 /* ===== CERTIFICATIONS ===== */
