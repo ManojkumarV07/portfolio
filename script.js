@@ -146,6 +146,21 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// ===== EXTERNAL LINK & DOWNLOAD HELPERS =====
+// Using JS instead of <a href> so no URL shows in browser status bar on hover
+function openLink(url) {
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function downloadResume() {
+  const a = document.createElement('a');
+  a.href = 'assets/Manoj_Kumar_V_Resume.pdf';
+  a.download = 'Manoj_Kumar_V_Resume.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 // ===== EMAIL PICKER MODAL =====
 const EMAIL_TO      = 'manojkumarvk23@gmail.com';
 const EMAIL_SUBJECT = 'Hello Manoj \u2014 Saw Your Portfolio';
